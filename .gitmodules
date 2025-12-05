@@ -1,0 +1,15 @@
+[submodule "cryptowatch-frontend"]
+	path = cryptowatch-frontend
+	url = https://github.com/viktor-va/cryptowatch-frontend.git
+[submodule "cryptowatch-infrastructure"]
+	path = cryptowatch-infrastructure
+	url = https://github.com/viktor-va/cryptowatch-infrastructure.git
+[submodule "cryptowatch-notifier"]
+	path = cryptowatch-notifier
+	url = https://github.com/viktor-va/cryptowatch-notifier.git
+[submodule "cryptowatch-ingest"]
+	path = cryptowatch-ingest
+	url = https://github.com/viktor-va/cryptowatch-ingest.git
+[submodule "cryptowatch-api"]
+	path = cryptowatch-api
+	url = https://github.com/viktor-va/cryptowatch-api.git
