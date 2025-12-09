@@ -52,8 +52,7 @@ To get the project up and running locally, follow these steps:
 1.  **Clone the repository with submodules:**
 
     ```bash
-    git clone --recurse-submodules https://github.com:viktor-va/cryptowatch-project.git
-    cd cryptowatch-project/cryptowatch-infrastructure/
+    git clone --recurse-submodules https://github.com/viktor-va/cryptowatch-project.git
     ```
 
 2.  **Set up the environment file:**
@@ -61,6 +60,7 @@ To get the project up and running locally, follow these steps:
     Create a `.env` file in the root of the project by copying the example file from the `cryptowatch-infrastructure` directory:
 
     ```bash
+    cd cryptowatch-project/cryptowatch-infrastructure/
     cp .env.example .env
     ```
 
@@ -99,11 +99,12 @@ Here are some example `curl` commands:
 ```bash
 curl -X POST http://localhost/api/auth/register \
 -H "Content-Type: application/json" \
+-H "Accept: application/json" \
 -d '{
     "name": "John Doe",
     "email": "john.doe@example.com",
-    "password": "Password123",
-}'
+    "password": "Password123"
+}' | jq
 ```
 
 **Log in and get a JWT token:**
@@ -111,10 +112,11 @@ curl -X POST http://localhost/api/auth/register \
 ```bash
 curl -X POST http://localhost/api/auth/login \
 -H "Content-Type: application/json" \
+-H "Accept: application/json" \
 -d '{
     "email": "john.doe@example.com",
     "password": "Password123"
-}'
+}' | jq
 ```
 
 SAVE this token, it will be valid during the next 60 minutes:
@@ -125,10 +127,11 @@ TOKEN=your-token-here
 **Add telegram id (that you added to bot in the previous steps) to your User :**
 
 ```bash
-curl -X PUT http://localhost/api/auth/login \
+curl -X PUT http://localhost/api/auth/me \
 -H "Authorization: Bearer $TOKEN" \
 -H "Content-Type: application/json" \
--d '{"telegram_chat_id": "your-telegram-id-added-to-bot"}'
+-H "Accept: application/json" \
+-d '{"telegram_chat_id": "your-telegram-id-added-to-bot"}' | jq
 ```
 
 
@@ -138,11 +141,12 @@ curl -X PUT http://localhost/api/auth/login \
 curl -X POST http://localhost/api/v1/alerts \
 -H "Authorization: Bearer $TOKEN" \
 -H "Content-Type: application/json" \
+-H "Accept: application/json" \
 -d '{
     "symbol": "BTC",
     "target_price": 100000,
     "condition": "gt"
-}'
+}' | jq
 ```
 
 ### Simulating Market Data
@@ -194,7 +198,7 @@ docker-compose exec notifier php artisan test
 
 ## Static Analysis
 
-The project uses **PHPStan** for static analysis to find potential bugs and improve code quality and is configured to run at **level 6**. 
+The project uses **PHPStan** for static analysis to find potential bugs and improve code quality and is configured to run at **level 6**.
 To run the static analysis for each service, use the following commands:
 
 ```bash
