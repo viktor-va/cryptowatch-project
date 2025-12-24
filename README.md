@@ -31,11 +31,12 @@ This project uses the **Event-Carried State Transfer** pattern. Instead of servi
 | Core                   | PHP 8.2 + Laravel 12                           |
 | Auth                   | JWT                                            |
 | Database               | PostgreSQL, Redis                              |
+| Message Broker         | Apache Kafka                                   |
 | Cache / Queue          | Redis                                          |
 | Realtime               | WebSocket (Laravel Reverb)                     |
 | Web Server             | Nginx                                          |
-| DevOps & Observability | Docker & Docker Compose, ELK Stack, Supervisor |
-| Tests & Static Analysis | PEST, PHPStan                                  |
+| DevOps & Observability | Docker & Docker Compose, ELK Stack, Kafka UI, Supervisor |
+| Tests & Static Analysis | PEST, PHPStan                                 |
 
 
 ## Getting Started
